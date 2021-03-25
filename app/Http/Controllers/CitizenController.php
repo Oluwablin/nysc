@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Citizen;
+use App\Models\Citizen;
+use App\Models\Ward;
+use App\Models\LGA;
+use App\Models\User;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class CitizenController extends Controller
@@ -12,7 +16,7 @@ class CitizenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function corperDashboard(Request $request)
     {
         //
     }
@@ -28,12 +32,23 @@ class CitizenController extends Controller
     }
 
     /**
+     * Logout a corp member
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function register_citizen(Request $request)
     {
         //
     }
@@ -41,10 +56,10 @@ class CitizenController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Citizen  $citizen
+     * @param  \App\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(Citizen $citizen)
+    public function user_reports(Request $request)
     {
         //
     }

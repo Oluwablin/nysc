@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\LGA;
+use App\Models\LGA;
 use Illuminate\Http\Request;
 
 class LGAController extends Controller
