@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Ward;
 use App\Models\State;
+use App\Models\Citizen;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,5 +24,13 @@ class LGA extends Model
     public function state()
     {
         return $this->belongsTo(State::class, 'state_id');
+    }
+
+    /*
+     * An LGA has  many wards
+     */
+    public function citizen()
+    {
+        return $this->hasMany(Citizen::class);
     }
 }

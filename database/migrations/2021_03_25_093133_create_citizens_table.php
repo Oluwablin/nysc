@@ -15,12 +15,20 @@ class CreateCitizensTable extends Migration
     {
         Schema::create('citizens', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('ward_id')->nullable();
-            $table->string('name');
-            $table->string('gender');
-            $table->string('address');
-            $table->string('phone');
-            $table->foreign('ward_id')->references('id')->on('wards')
+            $table->integer('ward_id')->nullable();
+            $table->unsignedInteger('lga_id')->nullable();
+            $table->unsignedInteger('state_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            // $table->foreign('ward_id')->references('id')->on('wards')
+            // ->onDelete('cascade')
+            // ->onUpdate('cascade');
+            $table->foreign('lga_id')->references('id')->on('l_g_a_s')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->foreign('state_id')->references('id')->on('states')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->timestamps();

@@ -18,6 +18,25 @@
                 </div>
             </div>
         </div>
+
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <a href='{{ route('corper_dashboard') }}'>Register Citizen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <a href='{{ route('user_reports') }}'>User Reports</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

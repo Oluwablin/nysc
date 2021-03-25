@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Citizen;
 use App\Models\Ward;
 use App\Models\LGA;
@@ -18,7 +19,13 @@ class CitizenController extends Controller
      */
     public function corperDashboard(Request $request)
     {
-        //
+        $citizens = Citizen::all();
+        $wards = Ward::all();
+        $lgas = LGA::all();
+        $users = User::all();
+        $states = State::all();
+
+        return view('corpers', compact('citizens', 'wards', 'lgas', 'users', 'states'));
     }
 
     /**
@@ -50,7 +57,19 @@ class CitizenController extends Controller
      */
     public function register_citizen(Request $request)
     {
-        //
+        $user = new Citizen;
+        $user->name = $request->name;
+        $user->gender = $request->gender;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->ward_id = $request->ward_id;
+        $user->lga_id = $request->lga_id;
+        $user->state_id = $request->state_id;
+        if($user->save()){
+            return redirect()->back()->with('success', 'Citizen created successfully');
+        }else{
+            return redirect()->back()->withErrors('citizen could not be created at this time.');
+        }
     }
 
     /**
@@ -61,7 +80,13 @@ class CitizenController extends Controller
      */
     public function user_reports(Request $request)
     {
-        //
+        $citizens = Citizen::simplePaginate(10);
+        $wards = Ward::all();
+        $lgas = LGA::all();
+        $users = User::simplePaginate(10);
+        $states = State::all();
+
+        return view('users_reports', compact('citizens', 'wards', 'lgas', 'users', 'states'));
     }
 
     /**

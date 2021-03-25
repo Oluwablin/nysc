@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'],function () {
 
     //CORP MEMBERS
     Route::get('corper_dashboard',      'CitizenController@corperDashboard')->name('corper_dashboard');
-    Route::get('corper_logout',      'CitizenController@logout')->name('corper_logout');
+    Route::post('corper_logout',      'CitizenController@logout')->name('corper_logout');
     Route::post('register_citizen',     'CitizenController@register_citizen')->name('register_citizen');
     Route::get('user_reports',          'CitizenController@user_reports')->name('user_reports');
 });
